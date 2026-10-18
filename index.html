@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+        #pattern {
+            background-color: #1f1f1f;
+            border: 5px solid #000000;
+            color: #ffffff;
+            padding: 1px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>時の神殿 引き算ジェネレータ</h1>
+    <p>=の右側のブロックを選択してね：</p>
+    <div id="ans_button">
+        <button onclick="solve( 'クォーツの柱')">クォーツの柱</button>　
+        <button onclick="solve( '雪')">雪</button>　
+        <button onclick="solve( '階段')">階段</button>　
+        <button onclick="solve( '鉄インゴット')">鉄インゴット</button>　
+        <button onclick="solve( '木のトラップドア')">木のトラップドア</button>　
+        <button onclick="solve( '鉄のトラップドア')">鉄のトラップドア</button>　
+        <button onclick="solve( '石')">石</button>　
+        <button onclick="solve( 'コマンドブロック')">コマンドブロック</button>　
+        <button onclick="solve( 'リンゴ')">リンゴ</button>　
+        <button onclick="solve( 'カボチャ')">カボチャ</button>　
+        <button onclick="solve( 'ドア')">ドア</button>　
+        <button onclick="solve( 'TNT')">TNT</button>　
+        <button onclick="solve( 'フェンス')">フェンス</button>　
+        <button onclick="solve( 'ハーフブロック')">ハーフブロック</button>　
+        <button onclick="solve( '磨かれた閃緑岩')">磨かれた閃緑岩</button>　
+        <button onclick="solve( 'グロウストーン')">グロウストーン</button>　
+    </div>
+    <div id="pattern">
+        <p>ここにパターンが表示されます</p>
+    </div>
+    <script>
+        const xBlocks = {
+            "雪": 6,
+            "階段": 4,
+            "鉄インゴット": 9,
+            "木のトラップドア": 2,
+            "鉄のトラップドア": 1,
+            "石": 0,
+            "コマンドブロック": 0,
+            "リンゴ": 0,
+            "カボチャ": 0,
+            "ドア": 3,
+            "TNT": 1,
+            "クォーツの柱": 2,
+            "フェンス": 3,
+            "ハーフブロック": 6,
+            "磨かれた閃緑岩": 4,
+            "グロウストーン": 1
+        };
+        const yBlocks = {
+            "雪": 6,
+            "階段": 4,
+            "鉄インゴット": 9,
+            "木のトラップドア": 2,
+            "鉄のトラップドア": 1,
+            "石": 0,
+            "コマンドブロック": 0,
+            "リンゴ": 0,
+            "カボチャ": 0,
+            "ドア": 3,
+            "TNT": 1,
+            "クォーツの柱": 2,
+            "フェンス": 3,
+            "ハーフブロック": 6,
+            "磨かれた閃緑岩": 4,
+            "グロウストーン": 1
+        };
+        const ansBlocks = {
+            "雪": 6,
+            "階段": 4,
+            "鉄インゴット": 9,
+            "木のトラップドア": 2,
+            "鉄のトラップドア": 1,
+            "石": 0,
+            "コマンドブロック": 0,
+            "リンゴ": 0,
+            "カボチャ": 0,
+            "ドア": 3,
+            "TNT": 1,
+            "クォーツの柱": 2,
+            "フェンス": 3,
+            "ハーフブロック": 6,
+            "磨かれた閃緑岩": 4,
+            "グロウストーン": 1
+        }
+        function solve(targetName) {
+            document.getElementById( 'pattern' ).innerHTML = "";
+        for (let x in xBlocks) {
+            for (let y in yBlocks) {
+                const xCount = xBlocks[x];
+                const yCount = yBlocks[y];
+                const ans = xCount - yCount;
+                if (ans === ansBlocks[targetName]) {
+                    const line = x + " - " + y + " → " + targetName + "<br>";
+                    document.getElementById( 'pattern' ).innerHTML += line;
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>
